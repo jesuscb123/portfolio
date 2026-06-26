@@ -93,9 +93,12 @@ const groups: { label: string; icon: typeof Code2; items: Tech[] }[] = [
 
 function TechChip({ tech }: { tech: Tech }) {
   const Icon = tech.icon;
+  const [hovered, setHovered] = useState(false);
   return (
     <motion.div
       variants={itemVariants}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
       whileHover={{
         y: -4,
         color: tech.color,
@@ -103,7 +106,7 @@ function TechChip({ tech }: { tech: Tech }) {
         boxShadow: `0 0 0 1px ${tech.color}33, 0 20px 48px -16px ${tech.color}`,
       }}
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative col-span-1 flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-white/5 p-2 text-center text-muted-foreground backdrop-blur-md"
+      className="tech-chip group relative col-span-1 flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-white/5 p-2 text-center text-muted-foreground backdrop-blur-md hover:z-20"
     >
       <div
         className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -115,9 +118,29 @@ function TechChip({ tech }: { tech: Tech }) {
         <Icon className="h-3.5 w-3.5" />
       </div>
       <span className="relative text-[10px] font-medium text-foreground">{tech.name}</span>
-      <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1.5 w-max max-w-[120px] -translate-x-1/2 rounded-md border border-white/10 bg-popover px-2 py-1 text-[9px] leading-tight text-muted-foreground opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100">
-        {tech.hint}
-      </span>
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 6, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.92 }}
+            transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="pointer-events-none absolute left-1/2 top-full z-30 mt-2.5 w-max max-w-[160px] -translate-x-1/2"
+          >
+            <div className="relative rounded-xl border border-white/10 bg-popover/95 px-3 py-2 text-left shadow-xl backdrop-blur-md">
+              <span
+                className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-white/10 bg-popover/95"
+              />
+              <p className="text-[10.5px] font-semibold" style={{ color: tech.color }}>
+                {tech.name}
+              </p>
+              <p className="mt-0.5 text-[10px] leading-snug text-muted-foreground">
+                {tech.hint}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -135,7 +158,7 @@ function TechGroup({
   const GroupIcon = group.icon;
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+    <div className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md has-[.tech-chip:hover]:z-20">
       <button
         type="button"
         onClick={onToggle}

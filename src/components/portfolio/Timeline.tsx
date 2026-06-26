@@ -13,7 +13,7 @@ const timeline = [
     tag: "Experiencia",
   },
   {
-    when: "2024 — 2026",
+    when: "2026",
     title: "Desarrollador Full-Stack · Libnamic",
     detail: "Backend con FastAPI y frontend con Vue.js sobre un proyecto real de empresa.",
     tag: "Experiencia",

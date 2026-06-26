@@ -55,7 +55,8 @@ export function Live() {
               key={p.title}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-surface/50 transition-all hover:border-electric/40"
+              transition={{ type: "spring", stiffness: 300, damping: 24 }}
+              className="group relative overflow-hidden rounded-3xl border border-border bg-surface/50 transition-colors duration-200 hover:border-electric/40"
             >
               <div className="relative aspect-[16/9] overflow-hidden bg-surface-2">
                 {p.screenshot ? (

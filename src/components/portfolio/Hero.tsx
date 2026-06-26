@@ -51,8 +51,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.25 }}
           className="mt-5 text-lg text-muted-foreground sm:text-xl"
         >
-          <span className="text-foreground">Java Backend</span> &{" "}
-          <span className="text-foreground">Android Developer</span>
+          <span className="text-foreground">Mobile & Web Software Engineer</span>
         </motion.p>
 
         <motion.p
@@ -61,8 +60,10 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="mx-auto mt-5 max-w-2xl text-balance text-base text-muted-foreground"
         >
-          Construyo sistemas backend robustos y apps Android nativas con foco en código limpio,
-          arquitecturas escalables y experiencias de usuario cuidadas.
+          Dando vida a productos digitales de principio a fin. Especializado en apps Android y
+          plataformas web Full Stack. Potencio mi flujo de trabajo con herramientas de IA para
+          optimizar los tiempos de entrega, garantizando un código robusto, seguro y bajo
+          supervisión humana.
         </motion.p>
 
         <motion.div
@@ -96,9 +97,9 @@ export function Hero() {
           className="mx-auto mt-16 grid max-w-2xl grid-cols-3 gap-4"
         >
           {[
-            { k: 3, s: "+", l: "Años aprendiendo" },
+            { k: 2, s: "", l: "Años desarrollando" },
             { k: 15, s: "+", l: "Proyectos" },
-            { k: 12, s: "", l: "Tecnologías" },
+            { k: 18, s: "", l: "Tecnologías" },
           ].map((s) => (
             <div key={s.l} className="rounded-2xl glass px-4 py-5">
               <div className="font-display text-3xl font-semibold text-gradient sm:text-4xl">
