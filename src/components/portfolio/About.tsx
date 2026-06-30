@@ -16,30 +16,37 @@ export function About() {
           <Reveal className="md:col-span-3">
             <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                A lo largo de mi formación he trabajado con tecnologías como{" "}
-                <span className="text-foreground">Python, Kotlin, Java, Spring Boot o Angular</span>,
-                pero si algo he aprendido en este tiempo es que programar no es solo escribir código.
-                Para mí, lo importante es cómo se construye: por eso me centro en aplicar patrones de
-                diseño y buenas prácticas que aseguren que el software sea escalable y fácil de mantener.
+                Durante mi trayectoria académica y profesional, he trabajado con un stack tecnológico
+                versátil que incluye{" "}
+                <span className="text-foreground">
+                  Python, Kotlin, Java, PHP, Next.js, Spring Boot o Angular
+                </span>
+                . Sin embargo, mi mayor aprendizaje ha sido comprender que programar va mucho más allá
+                de picar código. Mi enfoque se centra en cómo se construye el software: aplico patrones
+                de diseño y buenas prácticas para garantizar soluciones que sean escalables, robustas y
+                fáciles de mantener.
               </p>
               <p>
-                Me considero parte de una generación que está en plena revolución tecnológica: aprendí
-                las bases del desarrollo de forma tradicional, pero vivo de lleno la introducción de la{" "}
+                Me considero parte de una generación en plena revolución tecnológica. Aprendí las bases
+                del desarrollo de forma tradicional, pero vivo de lleno la introducción de la{" "}
                 <span className="text-foreground">Inteligencia Artificial</span> en el flujo de trabajo.
-                Esto me permite ser mucho más ágil y productivo, usando la IA para acelerar y resolver
-                errores de forma rápida, pero manteniendo siempre el criterio técnico para saber
-                exactamente qué está sucediendo en las entrañas del software.
+                Esto me permite ser mucho más ágil y productivo, usando la IA para acelerar el desarrollo
+                y resolver errores de forma rápida, pero manteniendo siempre el sólido criterio técnico
+                necesario para saber exactamente qué está sucediendo en las entrañas del software.
+              </p>
+              <p>
+                He validado estos conocimientos en el mundo real desarrollando{" "}
+                <span className="text-foreground">plataformas web a nivel corporativo</span>, lo que me
+                ha proporcionado una comprensión profunda del ciclo de vida del software y de las
+                necesidades de negocio. Esta experiencia, sumada a mi trabajo como técnico en
+                optimización y reparación de equipos, ha forjado en mí una mentalidad analítica y
+                altamente resolutiva frente a cualquier desafío.
               </p>
               <p>
                 Además, aporto un valor que va más allá del código. Mi experiencia previa como
-                teleoperador me ha dado una gran capacidad para trabajar bajo presión y gestionar la
-                comunicación con clientes. También he trabajado como técnico freelance optimizando y
-                reparando equipos informáticos, lo que me ha dado una visión práctica y resolutiva ante
-                cualquier problema técnico.
-              </p>
-              <p>
-                Estoy en busca de mi primera oportunidad laboral para demostrar mi capacidad de
-                resolución y seguir creciendo dentro de un equipo profesional.
+                teleoperador me ha dotado de una excelente capacidad para trabajar bajo presión,
+                adaptarme rápidamente a los cambios y gestionar una comunicación eficaz y empática con
+                los clientes o el equipo.
               </p>
             </div>
 
