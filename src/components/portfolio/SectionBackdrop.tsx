@@ -17,10 +17,16 @@ export function SectionBackdrop({
   corner?: Corner;
 }) {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
-      {banded && <div className="absolute inset-0 bg-surface/40" />}
+    <div className="absolute inset-0 -z-10">
+      {banded && (
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-surface/40" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        </div>
+      )}
       <div
-        className={`absolute h-[420px] w-[420px] rounded-full opacity-25 blur-[110px] ${cornerClasses[corner]} ${
+        className={`absolute h-[520px] w-[520px] rounded-full opacity-20 blur-[140px] ${cornerClasses[corner]} ${
           glow === "electric" ? "bg-electric" : "bg-violet"
         }`}
       />

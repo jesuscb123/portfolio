@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
 import { Reveal, Stagger, itemVariants } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { SectionBackdrop } from "./SectionBackdrop";
@@ -16,26 +16,34 @@ export function About() {
           <Reveal className="md:col-span-3">
             <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                Soy <span className="text-foreground">Jesús</span>, desarrollador junior con base sólida
-                en Java backend y desarrollo Android nativo. Vengo del mundo de los sistemas y las
-                telecomunicaciones, y eso me ha enseñado a pensar en cada pieza del stack —no solo
-                en la capa visible.
+                A lo largo de mi formación he trabajado con tecnologías como{" "}
+                <span className="text-foreground">Python, Kotlin, Java, Spring Boot o Angular</span>,
+                pero si algo he aprendido en este tiempo es que programar no es solo escribir código.
+                Para mí, lo importante es cómo se construye: por eso me centro en aplicar patrones de
+                diseño y buenas prácticas que aseguren que el software sea escalable y fácil de mantener.
               </p>
               <p>
-                Trabajo a diario con{" "}
-                <span className="text-foreground">Java, Spring Boot, Kotlin y Jetpack Compose</span>,
-                modelando dominios con cuidado y buscando siempre arquitecturas que escalen bien.
-                Ahora mismo profundizo en{" "}
-                <span className="text-foreground">arquitecturas limpias, testing y Docker</span> para
-                cerrar el ciclo del desarrollo profesional.
+                Me considero parte de una generación que está en plena revolución tecnológica: aprendí
+                las bases del desarrollo de forma tradicional, pero vivo de lleno la introducción de la{" "}
+                <span className="text-foreground">Inteligencia Artificial</span> en el flujo de trabajo.
+                Esto me permite ser mucho más ágil y productivo, usando la IA para acelerar y resolver
+                errores de forma rápida, pero manteniendo siempre el criterio técnico para saber
+                exactamente qué está sucediendo en las entrañas del software.
               </p>
               <p>
-                Me obsesiona el detalle: nombres claros, capas bien definidas, tests que sirvan y
-                commits que cuenten una historia. Creo que el buen software se nota en lo pequeño.
+                Además, aporto un valor que va más allá del código. Mi experiencia previa como
+                teleoperador me ha dado una gran capacidad para trabajar bajo presión y gestionar la
+                comunicación con clientes. También he trabajado como técnico freelance optimizando y
+                reparando equipos informáticos, lo que me ha dado una visión práctica y resolutiva ante
+                cualquier problema técnico.
+              </p>
+              <p>
+                Estoy en busca de mi primera oportunidad laboral para demostrar mi capacidad de
+                resolución y seguir creciendo dentro de un equipo profesional.
               </p>
             </div>
 
-            <Stagger className="mt-8 flex flex-wrap gap-2" stagger={0.05}>
+            <Stagger className="mt-14 flex flex-wrap gap-2" stagger={0.05}>
               {[
                 "Clean Code",
                 "Arquitectura limpia",
@@ -55,13 +63,34 @@ export function About() {
             </Stagger>
           </Reveal>
 
-          <Reveal delay={0.15} className="md:col-span-2">
-            <div className="relative overflow-hidden rounded-3xl glass p-2">
-              <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-electric/20 via-transparent to-violet/20 opacity-60 blur-xl" />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-surface-2 via-surface to-surface-2">
-                <div className="absolute inset-0 grid place-items-center text-muted-foreground">
-                  <User className="h-16 w-16" strokeWidth={1.25} />
-                </div>
+          <Reveal delay={0.15} className="md:col-span-2 flex items-center justify-center">
+            <div className="relative w-64 h-64 md:w-full md:h-auto md:aspect-square">
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, #00f0ff, #a855f7, #f59e0b, #10b981, #ec4899, #00f0ff)",
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute -inset-3 rounded-full opacity-50 blur-2xl"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, #00f0ff, #a855f7, #f59e0b, #10b981, #ec4899, #00f0ff)",
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              />
+              <div className="absolute inset-[3px] rounded-full overflow-hidden">
+                <Image
+                  src="/profile/foto-jesus.webp"
+                  alt="Jesús Conde Barba"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </Reveal>

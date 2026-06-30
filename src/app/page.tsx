@@ -6,6 +6,7 @@ import { Stack } from "@/components/portfolio/Stack";
 import { Projects } from "@/components/portfolio/Projects";
 import { Live } from "@/components/portfolio/Live";
 import { Timeline } from "@/components/portfolio/Timeline";
+import { Certifications } from "@/components/portfolio/Certifications";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 
@@ -40,6 +41,7 @@ export default function Index() {
         <Live />
         <Projects />
         <Timeline />
+        <Certifications />
         <Contact />
       </main>
       <Footer />

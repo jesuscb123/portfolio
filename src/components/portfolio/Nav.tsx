@@ -11,6 +11,7 @@ const links = [
   { href: "#live", label: "Live" },
   { href: "#projects", label: "Proyectos" },
   { href: "#timeline", label: "Trayectoria" },
+  { href: "#certifications", label: "Certificaciones" },
   { href: "#contact", label: "Contacto" },
 ];
 

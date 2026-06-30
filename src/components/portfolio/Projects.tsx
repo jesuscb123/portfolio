@@ -1,12 +1,23 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import { Stagger, itemVariants } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { SectionBackdrop } from "./SectionBackdrop";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+  repo: string;
+  demo: string | null;
+  accent: string;
+  screenshot?: string;
+};
+
+const projects: Project[] = [
   {
     title: "TFG · App Salud Mental",
     description:
@@ -15,6 +26,7 @@ const projects = [
     repo: "https://github.com/jesuscb123",
     demo: null,
     accent: "from-electric/30 to-violet/20",
+    screenshot: "/projects/app-movil-v2.webp",
   },
   {
     title: "Backend Microservicios",
@@ -24,6 +36,7 @@ const projects = [
     repo: "https://github.com/jesuscb123",
     demo: null,
     accent: "from-violet/30 to-electric/20",
+    screenshot: "/projects/backend-microservicios.webp",
   },
   {
     title: "Integración Full-Stack · Libnamic",
@@ -42,6 +55,7 @@ const projects = [
     repo: "https://github.com/jesuscb123",
     demo: null,
     accent: "from-violet/20 to-electric/30",
+    screenshot: "/projects/imagen-repositorios-propios.webp",
   },
 ];
 
@@ -84,8 +98,17 @@ export function Projects() {
                 className={`pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-br ${p.accent} opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100`}
               />
               <div className="relative flex h-full flex-col">
-                <div className="flex aspect-[16/9] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-surface-2 via-surface to-surface-2">
-                  <ProjectVisual title={p.title} />
+                <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-surface-2 via-surface to-surface-2">
+                  {p.screenshot ? (
+                    <Image
+                      src={p.screenshot}
+                      alt={`Captura de ${p.title}`}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <ProjectVisual title={p.title} />
+                  )}
                 </div>
                 <h3 className="mt-5 font-display text-xl font-semibold">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>

@@ -6,16 +6,33 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { SectionBackdrop } from "./SectionBackdrop";
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<Status>("idle");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus("loading");
     const form = e.currentTarget;
     const data = new FormData(form);
-    const subject = encodeURIComponent(`Contacto desde portfolio — ${data.get("name")}`);
-    const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} (${data.get("email")})`);
-    window.location.href = `mailto:jesusctech.dev@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -29,7 +46,7 @@ export function Contact() {
         />
         <div className="mt-12 grid gap-8 md:grid-cols-5">
           <Reveal className="md:col-span-2">
-            <div className="space-y-3">
+            <div className="flex flex-col gap-5">
               <ContactRow icon={Mail} label="jesusctech.dev@gmail.com" href="mailto:jesusctech.dev@gmail.com" />
               <ContactRow icon={Phone} label="640 32 41 52" href="tel:+34640324152" />
               <ContactRow icon={Github} label="github.com/jesuscb123" href="https://github.com/jesuscb123" external />
@@ -47,11 +64,24 @@ export function Contact() {
               <Field label="Mensaje" name="message" textarea placeholder="Cuéntame brevemente en qué te puedo ayudar..." />
               <button
                 type="submit"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-electric to-violet px-6 py-3 text-sm font-medium text-background shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
+                disabled={status === "loading" || status === "success"}
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-electric to-violet px-6 py-3 text-sm font-medium text-background shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {sent ? "Abriendo tu cliente de email..." : "Enviar mensaje"}
-                <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                {status === "loading" && "Enviando..."}
+                {status === "success" && "¡Mensaje enviado!"}
+                {status === "error" && "Error al enviar"}
+                {status === "idle" && (
+                  <>
+                    Enviar mensaje
+                    <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </>
+                )}
               </button>
+              {status === "error" && (
+                <p className="text-center text-xs text-red-400">
+                  No se pudo enviar. Inténtalo de nuevo o escríbeme directamente.
+                </p>
+              )}
             </form>
           </Reveal>
         </div>

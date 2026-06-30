@@ -22,6 +22,7 @@ const live = [
       "Sitio web institucional construido con PHP, JavaScript y Bootstrap, con un diseño responsive orientado a la difusión de programas de emprendimiento.",
     tags: ["PHP", "JavaScript", "Bootstrap"],
     site: "https://www.pixemun.com/espana-emprende",
+    screenshot: "/projects/imagen-espana-emprende.webp",
   },
   {
     title: "Talento Joven",
@@ -29,6 +30,7 @@ const live = [
       "Landing page desarrollada con PHP y Bootstrap para la difusión de un programa de empleo e impulso al talento joven.",
     tags: ["PHP", "JavaScript", "Bootstrap"],
     site: "https://www.pixemun.com/talento-joven",
+    screenshot: "/projects/imagen-talento-joven.webp",
   },
   {
     title: "Talento 45",
@@ -36,6 +38,7 @@ const live = [
       "Landing page desarrollada con PHP y Bootstrap para la difusión de un programa de empleo dirigido a mayores de 45 años.",
     tags: ["PHP", "JavaScript", "Bootstrap"],
     site: "https://www.pixemun.com/talento-45",
+    screenshot: "/projects/imagen-talento-45.webp",
   },
 ];
 

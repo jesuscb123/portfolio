@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Particles } from "./Particles";
 import { Counter } from "./Counter";
 
@@ -73,12 +73,11 @@ export function Hero() {
           className="mt-9 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="/cv-jesus-conde-barba.pdf"
-            download
+            href="#projects"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-electric to-violet px-6 py-3 text-sm font-medium text-background shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
           >
-            <Download className="h-4 w-4" />
-            Descargar CV
+            Ver proyectos
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <a
             href="#contact"

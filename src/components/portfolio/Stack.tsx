@@ -23,7 +23,7 @@ import {
   SiGithub,
 } from "react-icons/si";
 import { Coffee, MousePointer2, Code2, Sparkles, Server, Layout, Database, Wrench } from "lucide-react";
-import { Stagger, itemVariants } from "./Reveal";
+import { Reveal, Stagger, itemVariants } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { SectionBackdrop } from "./SectionBackdrop";
 
@@ -85,7 +85,7 @@ const groups: { label: string; icon: typeof Code2; items: Tech[] }[] = [
     label: "Herramientas",
     icon: Wrench,
     items: [
-      { name: "GitHub", icon: SiGithub, color: "#F0F6FC", hint: "Colaboración & CI" },
+      { name: "GitHub", icon: SiGithub, color: "#181717", hint: "Colaboración & CI" },
       { name: "Git", icon: SiGit, color: "#F05032", hint: "Control de versiones" },
     ],
   },
@@ -93,54 +93,33 @@ const groups: { label: string; icon: typeof Code2; items: Tech[] }[] = [
 
 function TechChip({ tech }: { tech: Tech }) {
   const Icon = tech.icon;
-  const [hovered, setHovered] = useState(false);
   return (
     <motion.div
       variants={itemVariants}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
       whileHover={{
         y: -4,
-        color: tech.color,
         borderColor: `${tech.color}66`,
-        boxShadow: `0 0 0 1px ${tech.color}33, 0 20px 48px -16px ${tech.color}`,
+        boxShadow: `0 0 0 1px ${tech.color}22, 0 16px 40px -12px ${tech.color}66`,
       }}
-      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="tech-chip group relative col-span-1 flex flex-col items-center justify-center gap-1 rounded-xl border border-white/10 bg-white/5 p-2 text-center text-muted-foreground backdrop-blur-md hover:z-20"
+      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+      className="tech-chip group relative flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md hover:z-20"
     >
       <div
-        className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-30 transition-opacity duration-300 group-hover:opacity-70"
         style={{
-          background: `radial-gradient(circle at 50% 20%, ${tech.color}33, transparent 70%)`,
+          background: `radial-gradient(circle at 0% 50%, ${tech.color}33, transparent 65%)`,
         }}
       />
-      <div className="relative grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/5">
-        <Icon className="h-3.5 w-3.5" />
+      <div
+        className="relative grid h-10 w-10 shrink-0 place-items-center rounded-xl"
+        style={{ backgroundColor: `${tech.color}22` }}
+      >
+        <Icon className="h-5 w-5" style={{ color: tech.color }} />
       </div>
-      <span className="relative text-[10px] font-medium text-foreground">{tech.name}</span>
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0, y: 6, scale: 0.92 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.92 }}
-            transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-none absolute left-1/2 top-full z-30 mt-2.5 w-max max-w-[160px] -translate-x-1/2"
-          >
-            <div className="relative rounded-xl border border-white/10 bg-popover/95 px-3 py-2 text-left shadow-xl backdrop-blur-md">
-              <span
-                className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-white/10 bg-popover/95"
-              />
-              <p className="text-[10.5px] font-semibold" style={{ color: tech.color }}>
-                {tech.name}
-              </p>
-              <p className="mt-0.5 text-[10px] leading-snug text-muted-foreground">
-                {tech.hint}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="relative min-w-0">
+        <p className="text-sm font-semibold text-foreground">{tech.name}</p>
+        <p className="mt-0.5 truncate text-[11px] text-muted-foreground">{tech.hint}</p>
+      </div>
     </motion.div>
   );
 }
@@ -192,7 +171,7 @@ function TechGroup({
             className={isAnimating ? "overflow-hidden" : "overflow-visible"}
           >
             <Stagger
-              className="grid auto-rows-[78px] grid-cols-4 gap-2 px-4 pb-4 sm:auto-rows-[88px] sm:grid-cols-6 lg:auto-rows-[96px] lg:grid-cols-8"
+              className="grid grid-cols-1 gap-2 px-4 pb-5 sm:grid-cols-2 lg:grid-cols-3"
               stagger={0.04}
             >
               {group.items.map((tech) => (
@@ -229,15 +208,16 @@ export function Stack() {
           title="Las herramientas que uso cada día."
         />
         <div className="mt-14 space-y-4">
-          {groups.map((g) => {
+          {groups.map((g, i) => {
             const isOpen = openLabels.has(g.label);
             return (
-              <TechGroup
-                key={g.label}
-                group={g}
-                isOpen={isOpen}
-                onToggle={() => toggle(g.label)}
-              />
+              <Reveal key={g.label} delay={i * 0.05}>
+                <TechGroup
+                  group={g}
+                  isOpen={isOpen}
+                  onToggle={() => toggle(g.label)}
+                />
+              </Reveal>
             );
           })}
         </div>
