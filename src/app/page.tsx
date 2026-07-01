@@ -1,50 +1,26 @@
 import type { Metadata } from "next";
-import { Nav } from "@/components/portfolio/Nav";
-import { Hero } from "@/components/portfolio/Hero";
-import { About } from "@/components/portfolio/About";
-import { Stack } from "@/components/portfolio/Stack";
-import { Projects } from "@/components/portfolio/Projects";
-import { Live } from "@/components/portfolio/Live";
-import { Timeline } from "@/components/portfolio/Timeline";
-import { Certifications } from "@/components/portfolio/Certifications";
-import { Contact } from "@/components/portfolio/Contact";
-import { Footer } from "@/components/portfolio/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { HeroSection } from "@/components/features/HeroSection";
 
 export const metadata: Metadata = {
-  title: "Jesús Conde Barba — Java Backend & Android Developer",
+  title: "SENTINEL AI — Security Systems",
   description:
-    "Portfolio de Jesús Conde Barba, desarrollador junior especializado en Java, Spring Boot, Kotlin y Android. Proyectos, stack y experiencia.",
-  alternates: {
-    canonical: "/",
-  },
+    "Enterprise security systems built in days. AI-powered surveillance deployed with zero-trust architecture. Smart access control set up for your entire facility.",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Jesús Conde Barba — Java Backend & Android Developer",
+    title: "SENTINEL AI — Security Systems",
     description:
-      "Desarrollador junior enfocado en código limpio y escalable. Java, Spring Boot, Kotlin, Android.",
+      "Enterprise security systems built in days. AI-powered surveillance with zero-trust architecture.",
     type: "website",
     url: "/",
-  },
-  twitter: {
-    title: "Jesús Conde Barba — Developer",
-    description: "Portfolio profesional: Java Backend, Kotlin & Android.",
   },
 };
 
 export default function Index() {
   return (
-    <div id="top" className="relative min-h-screen overflow-x-hidden">
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Stack />
-        <Live />
-        <Projects />
-        <Timeline />
-        <Certifications />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="bg-hero-bg min-h-screen">
+      <Navbar />
+      <HeroSection />
     </div>
   );
 }
